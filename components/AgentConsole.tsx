@@ -26,7 +26,7 @@ interface AgentConsoleProps {
 
 const MODELS = [
   { id: 'gemini-2.5-flash', name: 'Nexa 2.5 Flux', description: 'Fast, everyday tasks' },
-  { id: 'gemini-1.5-pro', name: 'Nexa 1.5 Pro', description: 'Deep reasoning & quality' },
+  { id: 'gemini-2.0-flash', name: 'Nexa 2.0 Flash', description: 'Speed & efficiency' },
 ];
 
 const SUGGESTIONS = [

@@ -607,8 +607,8 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ config, user, onClose, on
                                         className="w-4 h-4"
                                     />
                                     <div className="flex-1 min-w-0">
-                                        <div className="text-sm font-medium text-gray-900">Gemini 1.5 Pro (Max)</div>
-                                        <div className="text-xs text-gray-500">Deep reasoning, complex queries</div>
+                                        <div className="text-sm font-medium text-gray-900">Gemini 2.0 Flash</div>
+                                        <div className="text-xs text-gray-500">Fast & efficient reasoning</div>
                                     </div>
                                 </label>
                             </div>

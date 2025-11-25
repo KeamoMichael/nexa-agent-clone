@@ -94,10 +94,11 @@ const writeCodeTool: FunctionDeclaration = {
 export const initializeGemini = () => {
   const apiKey = process.env.API_KEY;
   if (!apiKey) {
-    console.error("API Key not found");
+    console.error("API Key not found in process.env.API_KEY");
     return null;
   }
   
+  console.log("Initializing Gemini with API key (length: " + apiKey.length + ")");
   const ai = new GoogleGenAI({ apiKey });
   return ai;
 };

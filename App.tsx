@@ -191,7 +191,7 @@ const App: React.FC = () => {
     // If the user selected a model mode, map it to a concrete model id.
     const modeModelMap: Record<string, string> = {
       fast: 'gemini-2.5-flash',
-      max: 'gemini-1.5-pro'
+      max: 'gemini-2.0-flash'
     };
 
     const targetModel = (newConfig.modelMode && modeModelMap[newConfig.modelMode]) ? modeModelMap[newConfig.modelMode] : selectedModel;
