@@ -1,0 +1,5 @@
+{
+  "name": "Nexa Agent Clone",
+  "description": "A general-purpose AI agent interface capable of planning, reasoning, and tool execution with a modern light-mode aesthetic.",
+  "requestFramePermissions": []
+}
