@@ -122,10 +122,10 @@ export const createChatSession = (
   });
 };
 
-export const generateChatTitle = async (ai: GoogleGenAI, prompt: string) => {
+export const generateChatTitle = async (ai: GoogleGenAI, prompt: string, modelName: string = 'gemini-2.5-flash') => {
   try {
     const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
+      model: modelName,
       contents: `
       Analyze the following user prompt and generate a short, creative, and relevant title (max 5 words) for a chat session.
       

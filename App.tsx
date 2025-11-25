@@ -15,6 +15,7 @@ export interface AgentConfig {
   systemInstruction: string;
   theme: 'light' | 'dark' | 'system';
   language: string;
+  modelMode: 'fast' | 'max';
 }
 
 const App: React.FC = () => {
@@ -53,7 +54,8 @@ const App: React.FC = () => {
     temperature: 0.7,
     systemInstruction: DEFAULT_SYSTEM_INSTRUCTION,
     theme: 'light',
-    language: 'English'
+    language: 'English',
+    modelMode: 'fast'
   });
   
   // Layout State
@@ -186,7 +188,15 @@ const App: React.FC = () => {
     // Re-init with new config BUT preserve current message history
     // This allows the user to change settings (e.g., make agent more creative) 
     // in the middle of a chat without losing context.
-    initChatSession(selectedModel, messages);
+    // If the user selected a model mode, map it to a concrete model id.
+    const modeModelMap: Record<string, string> = {
+      fast: 'gemini-2.5-flash',
+      max: 'gemini-1.5-pro'
+    };
+
+    const targetModel = (newConfig.modelMode && modeModelMap[newConfig.modelMode]) ? modeModelMap[newConfig.modelMode] : selectedModel;
+    setSelectedModel(targetModel);
+    initChatSession(targetModel, messages);
   };
 
   const handleSelectKey = async () => {
@@ -418,10 +428,10 @@ The topic discussed is complex and involves multiple factors.
         };
         setSessions(prev => [newSession, ...prev]);
         
-        // Generate creative title in background
+        // Generate creative title in background using the selected model
         const ai = initializeGemini();
         if (ai) {
-             generateChatTitle(ai, initialInput).then(title => {
+             generateChatTitle(ai, initialInput, selectedModel).then(title => {
                  setSessions(prev => prev.map(s => 
                     s.id === activeSessionId ? { ...s, name: title } : s
                  ));

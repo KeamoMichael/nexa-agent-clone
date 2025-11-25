@@ -580,6 +580,41 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ config, user, onClose, on
                          <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wide border-b border-gray-100 pb-2">AI Preferences</h3>
                          
                          <div>
+                            <label className="block text-sm font-medium text-gray-900 mb-2">AI Model</label>
+                            <p className="text-xs text-gray-500 mb-3">Select the model to use for your AI agent.</p>
+                            <div className="space-y-2">
+                                <label className="flex items-center space-x-3 p-2 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-colors">
+                                    <input 
+                                        type="radio" 
+                                        name="model" 
+                                        value="fast"
+                                        checked={(localConfig as any).modelMode === 'fast'}
+                                        onChange={(e) => setLocalConfig({...localConfig, modelMode: e.target.value as any})}
+                                        className="w-4 h-4"
+                                    />
+                                    <div className="flex-1 min-w-0">
+                                        <div className="text-sm font-medium text-gray-900">Gemini 2.5 Flash (Fast)</div>
+                                        <div className="text-xs text-gray-500">Quick responses, everyday tasks</div>
+                                    </div>
+                                </label>
+                                <label className="flex items-center space-x-3 p-2 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-colors">
+                                    <input 
+                                        type="radio" 
+                                        name="model" 
+                                        value="max"
+                                        checked={(localConfig as any).modelMode === 'max'}
+                                        onChange={(e) => setLocalConfig({...localConfig, modelMode: e.target.value as any})}
+                                        className="w-4 h-4"
+                                    />
+                                    <div className="flex-1 min-w-0">
+                                        <div className="text-sm font-medium text-gray-900">Gemini 1.5 Pro (Max)</div>
+                                        <div className="text-xs text-gray-500">Deep reasoning, complex queries</div>
+                                    </div>
+                                </label>
+                            </div>
+                         </div>
+                         
+                         <div>
                             <label className="block text-sm font-medium text-gray-900 mb-2">Agent Persona (System Instructions)</label>
                             <p className="text-xs text-gray-500 mb-3">Define the behavior and personality of your AI agent.</p>
                             <textarea 
